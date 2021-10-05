@@ -8,15 +8,16 @@ public class Pickups : MonoBehaviour
     PlayerMovement player;
     private void Start()
     {
-        player = GetComponentInChildren<PlayerMovement>();
+        player = FindObjectOfType<PlayerMovement>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            player.picks++;
             pickups.SetActive(true);
             this.gameObject.SetActive(false);
-            player.picks++;
+            
         }
     }
 }
